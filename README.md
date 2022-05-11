@@ -3,6 +3,16 @@ MongoDB Express React Node
 
 Servidor Express js - Mongo DB using warehouse.js
 
+## Libs to add
+- cors - Cross Platform Security Policy
+- warehousejs - data storage layer
+- nodemon - node sever develop
+- nodejs-base64 - base64 hash
+- dotenv - environment vars
+_Optionals_
+- loading-cli - loading animation
+- chalk - pretty console logs
+
 ## To Do:
 - Routes
   - Insert (POST)
