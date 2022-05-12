@@ -6,6 +6,10 @@ const { unauthorizedResponse } = require("../users/functions");
 
 const dbo = require("../db/conn");
 
+dbo.connectToServer((err) => {
+  console.log(err);
+});
+
 // recordRoutes is an instance of the express router.
 // We use it to define our routes.
 // The router will be added as a middleware and will take control of requests starting with path /listings.
@@ -14,16 +18,16 @@ const recordRoutes = express.Router();
 recordRoutes.use(basicAuth({ users: docs, unauthorizedResponse }));
 
 // This section will help you get a list of all the documents.
-recordRoutes.get("/listings", async (req, res) => {
+recordRoutes.get("/get", async (req, res) => {
   const dbConnect = dbo.getDb();
-
+  const { collection } = req.query;
   dbConnect
-    .collection("listingsAndReviews")
+    .collection(collection)
     .find({})
     .limit(50)
     .toArray(function (err, result) {
       if (err) {
-        res.status(400).send("Error fetching listings!");
+        res.status(400).send(`Error fetching ${collection}!`);
       } else {
         res.json(result);
       }
@@ -31,46 +35,60 @@ recordRoutes.get("/listings", async (req, res) => {
 });
 
 // This section will help you create a new document.
-recordRoutes.post("/listings/recordSwipe", (req, res) => {
+recordRoutes.post("/insert", (req, res) => {
   const dbConnect = dbo.getDb();
-  const matchDocument = {
-    listing_id: req.body.id,
-    last_modified: new Date(),
-    session_id: req.body.session_id,
-    direction: req.body.direction,
-  };
+  const { collection, many } = req.body;
 
-  dbConnect
-    .collection("matches")
-    .insertOne(matchDocument, function (err, result) {
-      if (err) {
-        res.status(400).send("Error inserting matches!");
-      } else {
-        console.log(`Added a new match with id ${result.insertedId}`);
-        res.status(204).send();
-      }
-    });
+  if (many) {
+    const { list } = req.body;
+    dbConnect
+      .collection(collection)
+      .insertMany([...list], function (err, result) {
+        if (err) {
+          res.status(400).send("Error inserting!");
+        } else {
+          console.log(`Added ${list.length} elements`);
+          res.status(200).send("Ok");
+        }
+      });
+  } else {
+    const { name, type, id, age, gender, region } = req.body;
+    dbConnect
+      .collection(collection)
+      .insertOne(
+        { name, type, id, age, gender, region },
+        function (err, result) {
+          if (err) {
+            res.status(400).send("Error inserting!");
+          } else {
+            console.log(`Added a new match with id ${result.insertedId}`);
+            res.status(200).send("Ok");
+          }
+        }
+      );
+  }
 });
 
 // This section will help you update a document by id.
-recordRoutes.post("/listings/updateLike", (req, res) => {
+recordRoutes.post("/update", (req, res) => {
   const dbConnect = dbo.getDb();
-  const listingQuery = { _id: req.body.id };
+  const { name, type, id, _id, age, gender, region } = req.body;
+  const { collection } = req.body;
+  const listingQuery = { _id };
   const updates = {
-    $inc: {
-      likes: 1,
-    },
+    $set: { name, type, id, age, gender, region },
   };
 
   dbConnect
-    .collection("listingsAndReviews")
+    .collection(collection)
     .updateOne(listingQuery, updates, function (err, _result) {
       if (err) {
         res
           .status(400)
-          .send(`Error updating likes on listing with id ${listingQuery.id}!`);
+          .send(`Error updating on listing with id ${listingQuery.id}!`);
       } else {
         console.log("1 document updated");
+        res.status(200).send("Ok");
       }
     });
 });

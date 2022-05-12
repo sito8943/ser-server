@@ -5,6 +5,24 @@ const PatienceTypes = {
   AdultoMayor: 3,
 };
 
+const PatienceRegions = {
+  ArroyoNaranjo: 0,
+  Boyeros: 1,
+  CentroHabana: 2,
+  Cotorro: 3,
+  DiezDeOctubre: 4,
+  ElCerro: 5,
+  Guanabacoa: 6,
+  LaHabanaDelEste: 7,
+  LaHabanaVieja: 8,
+  LaLisa: 9,
+  Marianao: 10,
+  Playa: 11,
+  PlazaDeLaRevolución: 12,
+  Regla: 13,
+  SanMiguelDelPadrón: 14,
+};
+
 const PatienceGenders = {
   M: 0,
   F: 0,
@@ -18,7 +36,7 @@ class Patience {
       id: 000000000000,
       age: 0,
       gender: PatienceGenders.M,
-      region: 0,
+      region: PatienceRegions.ArroyoNaranjo,
     }
   ) {
     const { name, type, id, age, gender, region } = options;
