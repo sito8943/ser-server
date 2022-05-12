@@ -30,6 +30,17 @@ class Patience {
     this.region = region;
   }
 
+  // setters
+
+  /**
+   * It sets the attribute of the object to the value of the second argument
+   * @param which - The attribute to change.
+   * @param to - The value to set the attribute to.
+   */
+  setAttribute(which, to) {
+    this[which] = to;
+  }
+
   // getters
 
   get Name() {
@@ -38,6 +49,22 @@ class Patience {
 
   get Type() {
     return this.type;
+  }
+
+  get Id() {
+    return this.id;
+  }
+
+  get Age() {
+    return this.age;
+  }
+
+  get Gender() {
+    return this.gender;
+  }
+
+  get Region() {
+    return this.region;
   }
 }
 
