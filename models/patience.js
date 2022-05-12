@@ -15,7 +15,7 @@ class Patience {
     options = {
       name: "",
       type: PatienceTypes.Lactante,
-      id: 000000,
+      id: 000000000000,
       age: 0,
       gender: PatienceGenders.M,
       region: 0,
