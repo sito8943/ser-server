@@ -62,7 +62,6 @@ recordRoutes.post("/insert", async (req, res) => {
       });
   } else {
     const data = req.body.options;
-
     await dbConnect
       .collection(collection)
       .insertOne(data, function (err, result) {
