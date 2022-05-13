@@ -1,6 +1,6 @@
 const extra = [
   { id: 0, collectionName: "municipality", name: "Municipios" },
-  { id: 1, collectionName: "genre", name: "Géneros" },
+  { id: 1, collectionName: "gender", name: "Géneros" },
   { id: 2, collectionName: "patienceType", name: "Tipos de Pacientes" },
 ];
 
@@ -67,7 +67,7 @@ const municipality = [
   },
 ];
 
-const genre = [
+const gender = [
   {
     id: 0,
     name: "Masculino",

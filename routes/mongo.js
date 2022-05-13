@@ -81,13 +81,13 @@ recordRoutes.post("/insert", async (req, res) => {
 recordRoutes.post("/update", async (req, res) => {
   load.start();
   const dbConnect = dbo.getDb();
-  const { name, type, id, _id, age, gender, region } = req.body;
-  const { collection } = req.body;
+  const { collection, _id } = req.body;
   const listingQuery = { _id };
+  const data = req.body.options;
   const updates = {
-    $set: { name, type, id, age, gender, region },
+    $set: data,
   };
-
+  console.log(data);
   await dbConnect
     .collection(collection)
     .updateOne(listingQuery, updates, function (err, _result) {
