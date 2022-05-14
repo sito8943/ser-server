@@ -85,9 +85,8 @@ recordRoutes.post("/update", async (req, res) => {
   const listingQuery = { _id };
   const data = req.body.options;
   const updates = {
-    $set: data,
+    $set: { ...data },
   };
-  console.log(data);
   await dbConnect
     .collection(collection)
     .updateOne(listingQuery, updates, function (err, _result) {
