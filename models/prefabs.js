@@ -2,6 +2,102 @@ const extra = [
   { id: 0, collectionName: "municipality", name: "Municipios" },
   { id: 1, collectionName: "gender", name: "Géneros" },
   { id: 2, collectionName: "patienceType", name: "Tipos de Pacientes" },
+  { id: 3, collectionName: "consultationType", name: "Tipos de Consultas" },
+  { id: 4, collectionName: "specialization", name: "Especialización" },
+];
+
+const consultationType = [
+  {
+    id: 0,
+    name: "0",
+  },
+  {
+    id: 1,
+    name: 1,
+  },
+];
+
+const specialization = [
+  {
+    id: 0,
+    name: "Medicina Familiar",
+  },
+  {
+    id: 1,
+    name: "Medicina Interna",
+  },
+  {
+    id: 2,
+    name: "Pediatría",
+  },
+  {
+    id: 3,
+    name: "Gineco obstetricia",
+  },
+  {
+    id: 4,
+    name: "Cirugía",
+  },
+  {
+    id: 5,
+    name: "Psiquiatría",
+  },
+  {
+    id: 6,
+    name: "Cardiología",
+  },
+  {
+    id: 7,
+    name: "Dermatología",
+  },
+  {
+    id: 8,
+    name: "Endocrinología",
+  },
+  {
+    id: 9,
+    name: "Gastroenterología",
+  },
+  {
+    id: 10,
+    name: "Infetología",
+  },
+  {
+    id: 11,
+    name: "Nefrología",
+  },
+  {
+    id: 12,
+    name: "Neurología",
+  },
+  {
+    id: 13,
+    name: "Radiología",
+  },
+  {
+    id: 14,
+    name: "Anestesiología",
+  },
+  {
+    id: 15,
+    name: "Oncología",
+  },
+  {
+    id: 16,
+    name: "Patología",
+  },
+  {
+    id: 17,
+    name: "Urología",
+  },
+  {
+    id: 18,
+    name: "Medicina física y rehabilitación",
+  },
+  {
+    id: 19,
+    name: "Medicina intensiva",
+  },
 ];
 
 const municipality = [
