@@ -9,11 +9,15 @@ const extra = [
 const consultationType = [
   {
     id: 0,
-    name: "0",
+    name: "De primera",
   },
   {
     id: 1,
-    name: 1,
+    name: "Reconsulta",
+  },
+  {
+    id: 2,
+    name: "Interconsulta",
   },
 ];
 

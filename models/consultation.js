@@ -1,21 +1,21 @@
-const ConsultationTypes = {
-  DePrimera: 0,
-  Reconsulta: 1,
-  Interconsulta: 2,
-};
+const Patience = require("./patience");
 
 class Consultation {
   constructor(
     options = {
-      id: 000000000000,
-      patienceId: 0,
-      type: ConsultationTypes.DePrimera,
+      id: 0,
+      type: 0,
+      specialization: 0,
+      hospital: 0,
+      patience: new Patience(),
     }
   ) {
-    const { id, patienceId, type } = options;
+    const { id, type, specialization, patience } = options;
     this.id = id;
-    this.patienceId = patienceId;
     this.type = type;
+    this.specialization = specialization;
+    this.patience = patience;
+    this.hospital = hospital;
   }
 
   // getters
@@ -24,12 +24,20 @@ class Consultation {
     return this.id;
   }
 
-  get PatienceId() {
-    return this.patienceId;
-  }
-
   get Type() {
     return this.type;
+  }
+
+  get Specialization() {
+    return this.specialization;
+  }
+
+  get Patience() {
+    return this.patience;
+  }
+
+  get Hospital() {
+    return this.hospital;
   }
 }
 

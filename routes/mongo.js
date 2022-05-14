@@ -84,6 +84,7 @@ recordRoutes.post("/update", async (req, res) => {
   const { collection } = req.body;
   const data = req.body.options;
   const listingQuery = { id: data.id };
+  console.log(data);
   const updates = {
     $set: { ...data },
   };
