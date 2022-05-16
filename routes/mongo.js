@@ -20,6 +20,12 @@ const recordRoutes = express.Router();
 
 recordRoutes.use(basicAuth({ users: docs, unauthorizedResponse }));
 
+recordRoutes.post("/query", async (req, res) => {
+  load.start();
+
+  load.stop();
+});
+
 // This section will help you get a list of all the documents.
 recordRoutes.get("/get", async (req, res) => {
   load.start();
