@@ -8,6 +8,7 @@ const dbo = require("../db/conn");
 
 const load = require("../utils/loading");
 const { error, log, info, good } = require("../utils/chalk");
+const { MostUsedHospitals } = require("../utils/functions");
 
 dbo.connectToServer((err) => {
   if (err) log(error(err));
@@ -22,7 +23,8 @@ recordRoutes.use(basicAuth({ users: docs, unauthorizedResponse }));
 
 recordRoutes.post("/query", async (req, res) => {
   load.start();
-
+  MostUsedHospitals();
+  res.sendStatus(200);
   load.stop();
 });
 
