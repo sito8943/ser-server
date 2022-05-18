@@ -11,6 +11,7 @@ const { error, log, info, good } = require("../utils/chalk");
 const {
   MostUsedHospitals,
   MostUsedConsultationTypes,
+  MostUsedPatienceTypes,
 } = require("../utils/functions");
 
 dbo.connectToServer((err) => {
@@ -26,8 +27,31 @@ recordRoutes.use(basicAuth({ users: docs, unauthorizedResponse }));
 
 recordRoutes.post("/query", async (req, res) => {
   load.start();
-  MostUsedHospitals({ year: 2022, month: 4 });
-  res.sendStatus(200);
+  try {
+    const { which, year, month, specialization, hospital } = req.body;
+    let result = [];
+    switch (which) {
+      case "1":
+        result = await MostUsedHospitals({ year, month });
+        break;
+      case "2":
+        result = await MostUsedDiagnosis({ specialization });
+        break;
+      case "3":
+        result = await AverageTimeOfConsultation({ specialization, hospital });
+        break;
+      case "4":
+        result = await MostUsedPatienceTypes({ year, month });
+        break;
+      case "5":
+        result = await MostUsedConsultationTypes({ year, month });
+        break;
+    }
+    console.log(result);
+    res.send({ result });
+  } catch (err) {
+    console.log(err);
+  }
   load.stop();
 });
 
