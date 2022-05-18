@@ -34,7 +34,7 @@ const MostUsedHospitals = async () => {
           if (itemA.count > itemB.count) return 1;
           return 0;
         });
-        console.log(arrayOfParsed);
+        return arrayOfParsed;
       }
     });
 };
