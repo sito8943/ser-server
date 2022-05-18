@@ -26,7 +26,7 @@ recordRoutes.use(basicAuth({ users: docs, unauthorizedResponse }));
 
 recordRoutes.post("/query", async (req, res) => {
   load.start();
-  MostUsedConsultationTypes();
+  MostUsedHospitals({ year: 2022, month: 4 });
   res.sendStatus(200);
   load.stop();
 });
