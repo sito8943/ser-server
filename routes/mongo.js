@@ -118,7 +118,7 @@ recordRoutes.post("/update", async (req, res) => {
   const dbConnect = dbo.getDb();
   const { collection } = req.body;
   const data = req.body.options;
-  const listingQuery = { id: data.id };
+  const listingQuery = { id: data.oldId ? data.oldId : data.id };
   console.log(data);
   const updates = {
     $set: { ...data },
