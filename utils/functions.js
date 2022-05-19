@@ -8,43 +8,40 @@ const MostUsedHospitals = async (options) => {
   const mongoResponse = await dbConnect
     .collection("consultation")
     .find({})
-    .limit(50);
-
-  const mongoArray = mongoResponse.toArray(function (err, result) {
-    if (err) {
-      log(error(`Error fetching Consultation`));
-      return { error: "Error!" };
-    } else {
-      log(good("Query executed correctly"));
-      data = result;
-      const mostUsedHospitals = data.filter((item) => {
-        const date = new Date(item.date);
-        if (date.getMonth() === month && date.getFullYear() === year)
-          return item;
-        return null;
-      });
-      let parsed = {};
-      mostUsedHospitals.forEach((item) => {
-        if (parsed[item.hospital]) parsed[item.hospital] += 1;
-        else parsed[item.hospital] = 1;
-      });
-      let arrayOfParsed = [];
-      // counting hospitals
-      Object.keys(parsed).forEach((item) => {
-        arrayOfParsed.push({ id: item, count: parsed[item] });
-      });
-      arrayOfParsed = arrayOfParsed
-        .sort((itemA, itemB) => {
-          if (itemA.count < itemB.count) return -1;
-          if (itemA.count > itemB.count) return 1;
-          return 0;
-        })
-        .reverse();
-      console.log(arrayOfParsed);
-      return arrayOfParsed;
-    }
-  });
-  console.log(mongoArray);
+    .limit(50)
+    .toArray(function (err, result) {
+      if (err) {
+        log(error(`Error fetching Consultation`));
+        return { error: "Error!" };
+      } else {
+        log(good("Query executed correctly"));
+        data = result;
+        const mostUsedHospitals = data.filter((item) => {
+          const date = new Date(item.date);
+          if (date.getMonth() === month && date.getFullYear() === year)
+            return item;
+          return null;
+        });
+        let parsed = {};
+        mostUsedHospitals.forEach((item) => {
+          if (parsed[item.hospital]) parsed[item.hospital] += 1;
+          else parsed[item.hospital] = 1;
+        });
+        let arrayOfParsed = [];
+        // counting hospitals
+        Object.keys(parsed).forEach((item) => {
+          arrayOfParsed.push({ id: item, count: parsed[item] });
+        });
+        arrayOfParsed = arrayOfParsed
+          .sort((itemA, itemB) => {
+            if (itemA.count < itemB.count) return -1;
+            if (itemA.count > itemB.count) return 1;
+            return 0;
+          })
+          .reverse();
+        return arrayOfParsed;
+      }
+    });
 };
 
 const MostUsedDiagnosis = async (options) => {
