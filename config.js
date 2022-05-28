@@ -1,10 +1,11 @@
 const dotenv = require("dotenv");
-const assert = require("assert");
+// const assert = require("assert");
 
 dotenv.config();
 
-const { DB } = process.env;
+const { user, url } = process.env;
 
 module.exports = {
-  DB,
+  USER: user,
+  URL: url,
 };

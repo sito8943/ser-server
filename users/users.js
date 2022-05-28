@@ -1,5 +1,7 @@
+const config = require("../config");
+
 const docs = {
-  docs: "f6581b76058b1336f8089fd71ac",
+  docs: config.USER,
 };
 
 module.exports = {
