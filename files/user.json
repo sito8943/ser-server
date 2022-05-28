@@ -4,6 +4,12 @@
       "id": "sito",
       "name": "Sito",
       "pwd": "12345678"
+    },
+    {
+      "id": "jose",
+      "name": "Jose",
+      "pwd": "12345678"
     }
-  ]
+  ],
+  "data": [{ "type": "Casa" }, { "type": "Hotel" }]
 }

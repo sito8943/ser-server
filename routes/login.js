@@ -1,5 +1,5 @@
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
 
 // user validate
 const { validateUser } = require("../utils/secure");
@@ -10,7 +10,7 @@ router.post("/login-cookies", function (req, res, next) {
 });
 
 /* GET home page. */
-router.post("/login", function (req, res, next) {
+router.post("/", (req, res) => {
   const { user, pwd } = req.body;
   //! no form validation
   const verified = validateUser(user, pwd);
