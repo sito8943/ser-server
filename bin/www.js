@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 
+// chalk
+const { info, log } = require("../utils/chalk");
+
 /**
  * Module dependencies.
  */
@@ -82,5 +85,6 @@ function onError(error) {
 function onListening() {
   var addr = server.address();
   var bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
+  log(info(`Listening on port ${port}`));
   debug("Listening on " + bind);
 }
