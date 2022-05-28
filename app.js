@@ -1,10 +1,11 @@
 const express = require("express");
 const path = require("path");
 
-const { helmet, cors, limiter, favicon, morgan } = require("./utils/secure");
+const { helmet, cors, limiter, favicon, morgan } = require("./utils/middlewares");
 
 // routes
 const index = require("./routes/index");
+const secure = require("./routes/secure");
 
 const app = express();
 
@@ -28,5 +29,6 @@ app.use(express.urlencoded({ extended: false }));
 
 // routes
 app.get("/", index);
+app.use("/secure/", secure);
 
 module.exports = app;

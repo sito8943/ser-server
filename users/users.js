@@ -1,9 +1,9 @@
 const config = require("../config");
 
-const docs = {
-  docs: config.USER,
+const users = {
+  normal: { name: "normal", pwd: config.USER },
 };
 
 module.exports = {
-  docs,
+  users,
 };
