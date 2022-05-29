@@ -13,11 +13,14 @@ const router = express.Router();
 
 router.get("/", (req, res) => {
   if (req.headers.authorization) {
-    const verified = verifyBasic(req.headers.authorization);
-    if (verified) {
-      log(`${info("Logged as ")}${good(verified)}`);
-      res.send(`Logged as ${verified}`).status(200);
-      return;
+    //! basic auth
+    if (req.headers.authorization.indexOf("Basic") > -1) {
+      const verified = verifyBasic(req.headers.authorization);
+      if (verified) {
+        log(`${info("Logged as ")}${good(verified)}`);
+        res.send(`Logged as ${verified}`).status(200);
+        return;
+      }
     }
   }
   res.send(notFound(req.baseUrl)).status(404);

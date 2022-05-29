@@ -1,6 +1,12 @@
 const express = require("express");
 
-const { helmet, cors, limiter, favicon, morgan } = require("./utils/middlewares");
+const {
+  helmet,
+  cors,
+  limiter,
+  favicon,
+  morgan,
+} = require("./utils/middlewares");
 
 // routes
 const index = require("./routes/index");
