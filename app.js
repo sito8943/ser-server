@@ -1,5 +1,4 @@
 const express = require("express");
-const path = require("path");
 
 const { helmet, cors, limiter, favicon, morgan } = require("./utils/middlewares");
 
