@@ -16,7 +16,7 @@ morgan.token("id", function getId(req) {
   return req.id;
 });
 
-const structure = morgan(":id :method : url : response-time");
+const structure = morgan(":id :method :url :response-time");
 
 const dev = morgan("dev", {
   skip: function (req, res) {

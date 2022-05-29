@@ -11,5 +11,31 @@
       "pwd": "12345678"
     }
   ],
-  "data": [{ "type": "Casa" }, { "type": "Hotel" }]
+  "building": [
+    {
+      "id": 1,
+      "type": "hut",
+      "color": "green"
+    },
+    {
+      "id": 2,
+      "type": "shop",
+      "color": "red"
+    },
+    {
+      "id": 3,
+      "type": "bank",
+      "color": "black"
+    }
+  ],
+  "city": [
+    {
+      "id": 1,
+      "name": "San Francisco"
+    },
+    {
+      "id": 2,
+      "name": "California"
+    }
+  ]
 }
